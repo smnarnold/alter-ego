@@ -27,6 +27,13 @@ function set_skull(x,y)
   mset(s.mtx,s.mty,0) -- remove original skull
 end
 
+function clean_skulls()
+  for i, v in ipairs(lvl.enemies.skulls) do
+    local s = lvl.enemies.skulls[i]
+    mset(s.mtx,s.mty,33)
+  end
+end
+
 function reset_skulls()
   for i, v in ipairs(lvl.enemies.skulls) do
     local s = lvl.enemies.skulls[i]

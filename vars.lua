@@ -2,6 +2,18 @@ function set_vars()
   tile_size=8
   d_op={[0]=1,0,3,2}
 
+  pl={
+    w=6,
+    h=8,
+    min_x=0,
+    min_y=0,
+    max_x=120,
+    max_y=128,
+    sp=1,
+    anim=0,
+    spd=1,
+  }
+
   game={
     cam={},
     gravity=0.2,
@@ -13,14 +25,14 @@ function set_vars()
       active="credits",
       credits={
         cam={
-          x=0,
+          x=64,
           y=48
         }
       },
       menu={
         cam={
-          x=0,
-          y=16
+          x=80,
+          y=48
         },
         anims={
           btn=0
@@ -29,13 +41,13 @@ function set_vars()
       over={
         cam={
           x=0,
-          y=32
+          y=96
         }
       },
       win={
         cam={
-          x=16,
-          y=32
+          x=112,
+          y=48
         }
       }
     }
@@ -191,6 +203,90 @@ function set_vars()
       pl={
         flpx=false,
         switch=2,
+      },
+      ego={
+        axe="x"
+      }
+    },
+    {
+      name="iceland",
+      cam={
+        x=64,
+        y=16
+      },
+      pl={
+        flpx=false,
+        switch=3,
+      },
+      ego={
+        axe="x"
+      }
+    },
+    {
+      name="midnight",
+      cam={
+        x=48,
+        y=16
+      },
+      pl={
+        flpx=false,
+        switch=2,
+      },
+      ego={
+        axe="x"
+      }
+    },
+    {
+      name="lonely skull",
+      cam={
+        x=32,
+        y=16
+      },
+      pl={
+        flpx=false,
+        switch=2,
+      },
+      ego={
+        axe="x"
+      }
+    },
+    {
+      name="made in heaven",
+      cam={
+        x=16,
+        y=16
+      },
+      pl={
+        flpx=false,
+        switch=5,
+      },
+      ego={
+        axe="y"
+      }
+    },
+    {
+      name="underwater",
+      cam={
+        x=0,
+        y=16
+      },
+      pl={
+        flpx=false,
+        switch=2,
+      },
+      ego={
+        axe="x"
+      }
+    },
+    {
+      name="zupapixels",
+      cam={
+        x=48,
+        y=32
+      },
+      pl={
+        flpx=false,
+        switch=9,
       },
       ego={
         axe="x"

@@ -24,6 +24,13 @@ function set_green_target(x,y)
   mset(t.mtx,t.mty,0) --remove original target
 end
 
+function clean_green_targets()
+  for i, v in ipairs(lvl.targets.green.list) do
+    local t = lvl.targets.green.list[i]
+    mset(t.mtx,t.mty,53)
+  end
+end
+
 function reset_green_targets()
   lvl.targets.green.catched=0
 
@@ -46,12 +53,7 @@ function update_green_targets()
     and not t.catched then
       lvl.targets.green.catched+=1
       t.catched=true
-      sfx(0)
-      
-      if lvl.targets.green.catched==#lvl.targets.green.list 
-      and lvl.targets.green.catched==#lvl.targets.green.list then
-        lvl_clear()
-      end
+      is_lvl_clear()
     end
   end
 end

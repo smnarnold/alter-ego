@@ -3,46 +3,40 @@ function set_pl(x,y)
   local tx=x-game.cam.x
   local ty=y-game.cam.y
 
-  pl={
-    original={
-      x=tx*8,
-      y=ty*8
-    },
+  pl.original={
     mtx=x,
     mty=y,
-    life=5,
-    active=true,
     x=tx*8,
-    y=ty*8,
-    w=6,
-    h=8,
-    ego=lvl.ego,
-    flpx=lvl.pl.flpx,
-    switch=lvl.pl.switch,
-    cx=0,
-    cy=8,
-    min_x=0,
-    min_y=0,
-    max_x=120,
-    max_y=128,
-    dx=0,
-    dy=0,
-    sp=1,
-    anim=0,
-    spd=1,
-    tx={},
-    a="idle",
-    theme="normal",
-    last_swap=0,
-    walking=false,
-    falling=false,
-    climbing=false
+    y=ty*8
   }
+  pl.mtx=x
+  pl.mty=y
+  pl.active=true
+  pl.x=tx*8
+  pl.y=ty*8
+  pl.ego=lvl.ego
+  pl.flpx=lvl.pl.flpx
+  pl.switch=lvl.pl.switch
+  pl.dx=0
+  pl.dy=0
+  pl.tx={}
+  pl.a="idle"
+  pl.theme="normal"
+  pl.walking=false
+  pl.falling=false
+  pl.climbing=false
 
   mset(pl.mtx,pl.mty,0) --remove original player
 end
 
+function clean_pl()
+  reset_pl()
+  mset(pl.original.mtx,pl.original.mty,1)
+end
+
 function reset_pl()
+  pl.dx=0
+  pl.dy=0
   pl.x=pl.original.x
   pl.y=pl.original.y
   pl.flpx=lvl.pl.flpx
@@ -71,6 +65,8 @@ function update_pl()
     --vars
     pl.is_on_ground=collide_map(pl,"down",0)
     pl.is_on_ladder=collide_map(pl,"up",2)
+
+    if (pl.is_on_ground) pl.y-=(pl.y+pl.h)%8
 
     if pl.is_on_ground
     or pl.is_on_ladder then
@@ -248,9 +244,9 @@ function death()
   
   if pl.life>0 then
     sleep(1)
-    lvl_reset()
-  else 
-    end_game()
+    reset_lvl()
+  else
+    lose_game()
   end
 end
  

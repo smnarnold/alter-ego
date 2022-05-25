@@ -5,8 +5,9 @@ end
 
 function start_game()
   sfx(3)
+  pl.life=5
   game.scr.active="play"
-  lvl_init()
+  init_lvl()
 end
 
 function draw_menu()

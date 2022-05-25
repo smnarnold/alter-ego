@@ -3,6 +3,7 @@ function update_play()
   update_purple_targets()
   update_green_targets()
   update_skulls()
+  update_flying_skulls()
   update_pl()
   update_ego()
 end
@@ -11,13 +12,14 @@ function draw_play()
   draw_purple_targets()
   draw_green_targets()
   draw_skulls()
+  draw_flying_skulls()
 	draw_pl()
 	draw_ego()
 	
   if lvl.clear then
     print("level clear",42,60,7)
     sleep(1)
- 	  lvl_next()
+ 	  next_lvl()
   else
     draw_board()
   end

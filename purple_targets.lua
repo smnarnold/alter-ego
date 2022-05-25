@@ -24,6 +24,13 @@ function set_purple_target(x,y)
   mset(t.mtx,t.mty,0) --remove original target
 end
 
+function clean_purple_targets()
+  for i, v in ipairs(lvl.targets.purple.list) do
+    local t = lvl.targets.purple.list[i]
+    mset(t.mtx,t.mty,37)
+  end
+end
+
 function reset_purple_targets()
   lvl.targets.purple.catched=0
 
@@ -47,11 +54,7 @@ function update_purple_targets()
       lvl.targets.purple.catched+=1
       t.catched=true
       sfx(0)
-      
-      if lvl.targets.purple.catched==#lvl.targets.purple.list 
-      and lvl.targets.green.catched==#lvl.targets.green.list then
-        lvl_clear()
-      end
+      is_lvl_clear()
     end
   end
 end
